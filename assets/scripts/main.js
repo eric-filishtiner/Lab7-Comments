@@ -199,7 +199,7 @@ function bindEscKey() {
    document.addEventListener('keydown', logKey);
 
    function logKey(e) {
-
+//empty
      if(e.code == 'Escape')
      {
        router.navigate('home');
