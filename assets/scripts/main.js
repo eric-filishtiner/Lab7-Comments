@@ -123,7 +123,7 @@ function createRecipeCards() {
     document.querySelector('recipe-expand').data = recipeData[recipes[i]];
   });
   bindRecipeCard(recipeCard, page);
-  if(i > 3)
+  if(i >= 3)
   {
     cards[i].classList.add('hidden');
   }
