@@ -125,7 +125,7 @@ function createRecipeCards() {
   bindRecipeCard(recipeCard, page);
   if(i >= 3)
   {
-    cards[i].classList.add('hidden');
+    recipeCard.classList.add('hidden');
   }
   document.querySelector('.recipe-cards--wrapper').appendChild(recipeCard);
 
