@@ -196,10 +196,11 @@ function bindEscKey() {
    */
 
   //https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event
-   document.addEventListener("keydown", logKey);
+   document.addEventListener('keydown', logKey);
 
    function logKey(e) {
-     if(` ${e.code}` == 'Escape')
+     console.log(` ${e.code}`);
+     if(` ${e.code}` == "Escape")
      {
        router.navigate('home');
      }
