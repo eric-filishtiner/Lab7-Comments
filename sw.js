@@ -16,6 +16,7 @@ self.addEventListener('install', function (event) {
    * Create a function as outlined above
    */
   // Perform install steps
+  //https://developers.google.com/web/ilt/pwa/caching-files-with-service-worker
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function(cache) {
@@ -47,19 +48,14 @@ self.addEventListener('fetch', function (event) {
    */
    self.onfetch = function(event) {
     event.respondWith(
-         (async function() {
-            var cache = await caches.open(cacheName);
-            var cachedFiles = await cache.match(event.request);
-            if(cachedFiles) {
-                return cachedFiles;
-            } else {
-                try {
-                    var response = await fetch(event.request);
-                    await cache.put(event.request, response.clone());
-                    return response;
-                } catch(e) { /* ... */ }
-            }
-        }())
-    )
+      caches.open('mysite-dynamic').then(function(cache) {
+        return cache.match(event.request).then(function (response) {
+          return response || fetch(event.request).then(function(response) {
+            cache.put(event.request, response.clone());
+            return response;
+          });
+        });
+      })
+    );
 }
 });
