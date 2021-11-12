@@ -38,15 +38,15 @@
       <recipe-expand></recipe-expand>
     </section>
     <!--REMOVED CUSTOM DIV -->
-      {% if page.comments %}
+
       <div id="disqus_thread"></div>
         <script>
         /**
         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+      //  {% if page.comments %}
         var disqus_config = function () {
-        //this.page.url =  "{{ page.url | prepend: site.url }}";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.url = 'https://eric-filishtiner.github.io/Lab7-Comments/';
+        this.page.url =  "{{ page.url | prepend: site.url | 'https://eric-filishtiner.github.io/Lab7-Comments/' }}";  // Replace PAGE_URL with your page's canonical URL variable
         this.page.identifier =  "{{ page.url }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
         };
         (function() { // DON'T EDIT BELOW THIS LINE
@@ -55,9 +55,11 @@
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
         })();
+        //{% endif %}
         </script>
+        
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        {% endif %}
+
   </main>
 </body>
 </html>
